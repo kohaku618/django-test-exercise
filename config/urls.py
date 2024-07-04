@@ -21,4 +21,5 @@ from tobo import views as tobo_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', tobo_views.index, name='index'),
+    path('<int:task_id>/', tobo_views.detail, name='detail'),
 ]
