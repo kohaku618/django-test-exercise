@@ -3,8 +3,10 @@ from django.utils import timezone
 from datetime import datetime
 from tobo.models import Task
 
-# Create your tests here.
+
 class SampleTestCase(TestCase):
+
+
     def test_sample1(self):
         self.assertEqual(1 + 2, 3)
 
@@ -53,7 +55,10 @@ class TaskModelTestCace(TestCase):
 
         self.assertFalse(task.is_overdue(current))
 
+
 class ToboViewTestCase(TestCase):
+
+
     def test_index_get(self):
         client = Client()
         response = client.get('/')
@@ -61,6 +66,7 @@ class ToboViewTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.templates[0].name, 'tobo/index.html')
         self.assertEqual(len(response.context['tasks']), 0)
+
     def test_index_post(self):
         client = Client()
         data = {'title': 'Test Task', 'due_at': '2024-06-30 23:59:59'}
@@ -94,4 +100,5 @@ class ToboViewTestCase(TestCase):
         self.assertEqual(response.templates[0].name, 'tobo/index.html')
         self.assertEqual(response.context['tasks'][0], task1)
         self.assertEqual(response.context['tasks'][1], task2)
+
 
