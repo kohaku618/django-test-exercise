@@ -94,6 +94,3 @@ class ToboViewTestCase(TestCase):
         self.assertEqual(response.templates[0].name, 'tobo/index.html')
         self.assertEqual(response.context['tasks'][0], task1)
         self.assertEqual(response.context['tasks'][1], task2)
-
-
-
