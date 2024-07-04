@@ -5,8 +5,6 @@ from tobo.models import Task
 
 
 class SampleTestCase(TestCase):
-
-
     def test_sample1(self):
         self.assertEqual(1 + 2, 3)
 
@@ -57,8 +55,6 @@ class TaskModelTestCace(TestCase):
 
 
 class ToboViewTestCase(TestCase):
-
-
     def test_index_get(self):
         client = Client()
         response = client.get('/')
@@ -82,7 +78,6 @@ class ToboViewTestCase(TestCase):
         task2.save()
         client = Client()
         response = client.get('/?order=post')
-    
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.templates[0].name, 'tobo/index.html')
         self.assertEqual(response.context['tasks'][0], task2)
@@ -95,10 +90,10 @@ class ToboViewTestCase(TestCase):
         task2.save()
         client = Client()
         response = client.get('/?order=due')
-    
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.templates[0].name, 'tobo/index.html')
         self.assertEqual(response.context['tasks'][0], task1)
         self.assertEqual(response.context['tasks'][1], task2)
+
 
 
